@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <aside id="Ferramentas">
+            <button type="button" onclick="criarUsuario()">Criar usuário</button>
+            <button type="button" onclick="verUsuario()">Ver usuário</button>
+            <button type="button" onclick="modificarUsuario()">Modificar usuário</button>
+            <button type="button" onclick="excluirUsuario()">Excluir usuário</button>
+        </aside>
+
+        <article id="info">
+            <section class="content">
+                <%if (mensagem === 'criar'){ %>
+                    <h3> O usuário "<%=usuario.name %> <%=usuario.lastName %>" foi criado com sucesso </h3>
+                    <p> Email: <%=usuario.email %> </p>
+                    <p> ID: <%=usuario.id %></p> 
+                <%} %>
+
+                <%if (mensagem === 'ver'){ %>
+                    <% if (users.length > 0) { %>
+                        <% users.forEach(user=>{ %>
+                        <div>
+                            <h3 class="title"> <%=user.name %> <%=user.lastName %> </h3>
+                
+                            <p> <%=user.email %> </p>
+                            <p><%=user.id %></p> </div>
+                        <% })%> <%}else{ %>
+                        <p>Não há usuários para exibir</p>
+                        <% }%>
+                <%} %>
+
+
+
+                <%if (mensagem === 'atualizar'){ %>
+                    <% if(user != null){ %>
+                        <h3> O usuário "<%=user.name %> <%=user.lastName %>" foi atualizado </h3>
+                        <p> Email: <%=user.email %> </p>
+                        <p> ID: <%=user.id %></p> 
+                    <%}else{ %>
+                        <p>Usuário não existe ou ID inserido incorretamente</p>
+                    <%} %>
+                <%} %>
+
+
+
+                <%if (mensagem === 'excluir'){ %>
+                    <% if(user != null){ %>
+                        <h3> O usuário "<%=user.name %> <%=user.lastName %>" foi excluído </h3>
+                        <p> Email: <%=user.email %> </p>
+                        <p> ID: <%=user.id %></p> 
+                    <%}else{ %>
+                        <p>Usuário não existe ou ID inserido incorretamente</p>
+                    <%} %>
+                <%} %>
+            </section>
+        </article>
+
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
